@@ -1,0 +1,783 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <title>Chess.com clone trying</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                text-decoration: none;
+                font-family: sans-serif;
+            }
+            body {
+                background-color: #312e2b;
+                max-width: 1600px;
+                width: 100%;
+                margin: auto;
+            }
+            .wrapper {
+                max-width: 1280px;
+                width: 80%;
+                margin: auto;
+                height: 1500px;
+            }
+            header {
+                padding-top: 20px;
+                display: flex;
+                justify-content: space-between;
+            }
+            .logo1 {
+                width: 160px;
+                margin-top: 10px;
+            }
+            .chessCom + h1 {
+                margin-top: 30px;
+                color: white;
+                font-size: 38px;
+            }
+            h1 + ul {
+                list-style-position: inside;
+                font-size: 19px;
+                margin-top: 17px;
+                color: darkgray;
+                line-height: 27px;
+            }
+            .playNow p {
+                width: 200px;
+                height: 80px;
+                background-color: #f8ad24;
+                border-radius: 3px;
+                margin-top: 50px;
+            }
+            .playNow p:hover {
+                background-color: #da8e03;
+            }
+            .btnTxt1 {
+                color: white;
+                position: relative;
+                left: 28px;
+                top: 22px;
+                font-weight: bold;
+                font-size: 27px;
+            }
+            .headImgRight {
+                width: 650px;
+            }
+            nav {
+                padding: 10px 0px;
+            }
+            nav img {
+                width: 35px;
+                margin-right: 15px;
+            }
+            nav a span {
+                color: darkgray;
+                vertical-align: middle;
+                font-size: 16px;
+                padding-right: 27px;
+                position: relative;
+                bottom: 13px;
+                font-weight: 600;
+            }
+            nav a span:hover {
+                color: white;
+            }
+            main {
+                display: flex;
+                justify-content: space-between;
+            }
+            .leftSection {
+                background-color: white;
+                max-width: 1040px;
+                width: 65%;
+                height: 2109px;
+            }
+            aside {
+                max-width: 528px;
+                width: 33%;
+            }
+            .wrapperInLeftSection {
+                background-color: white;
+                max-width: 988px;
+                width: 95%;
+                margin: auto;
+                overflow: hidden;
+                padding-top: 25px;
+            }
+            .leftSectionImg1 {
+                width: 640px;
+            }
+            .leftSectionImg1 + h2 {
+                font-size: 20px;
+                color: #005e94;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .fm {
+                color: red;
+                font-weight: bold;
+              
+            }
+            .mklein {
+                font-size: 14px;
+                color: gray;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .mklein:hover {
+                color: #4c4848;
+            }
+            .mklein + span {
+                color: gray;
+                font-size: 13px;
+            }
+            .leftSectionTxt1 {
+                font-size: 13px;
+                margin: 6px 0 25px 0;
+                line-height: 19px;
+                text-align: justify;
+            }
+            .nth1, .nth2, .nth3, .nth4 {
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 0;
+                overflow: hidden;
+            }
+            .nth1Left {
+                max-width: 760px;
+                width: 47.5%;
+            }
+            .nth1Right {
+                max-width: 760px;
+                width: 47.5%;
+            }
+            .nth1Left img + h3 {
+                font-size: 16px;
+                color: #005e94;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .clickMore {
+                background-color: #0000001a;
+                margin-top: 40px;
+                padding: 5px 0;
+                text-align: center;
+                font-weight: bold;
+                color: blue;
+                cursor: pointer;
+            }
+            .clickMore:hover {
+                color: orange;
+            }
+            .stathistick {
+                background-color: white;
+                margin-bottom: 13px;
+            }
+            .stathistick p {
+                padding: 5px 0 5px 10px;
+                border-bottom: 1px solid lightgray;
+            }
+            .stathistick img + span {
+                position: relative;
+                bottom: 12px;
+                font-weight: bold;
+                color: gray;
+                font-size: 15px;
+            }
+            .stathistick p span:last-child {
+                float: right;
+                font-weight: bold;
+                font-size: 15px;
+                padding-right: 15px;
+            }
+            .linkBox {
+                background-color: #f1f1f1;
+                padding: 10px 15px;
+            }
+            .stathickLinks {
+                display: flex;
+                justify-content: space-between;
+            }
+            .linkBox p {
+                padding: 0;
+                border: none;
+                font-size: 15px;
+                font-weight: bold;
+                color: darkgray;
+            }
+            .linkBox p:hover {
+                color: black;
+            }
+            .formBox {
+                height: 380px;
+                background-color: white;
+                padding: 18px;
+                margin-bottom: 15px;
+            }
+            form {
+                overflow: hidden;
+            }
+            .formBox p:first-child {
+                background-color: orange;
+                color: white;
+                text-align: center;
+                padding: 8px;
+                border-radius: 2px;
+                font-size: 18px;
+                word-spacing: 2px;
+            }
+            .formBox p:first-child:hover {
+                background-color: #ec7818;
+            }
+            input {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            form input:first-child, form input:nth-child(2) {
+                width: 293px;
+                height: 35px;
+                border: 1px solid lightgray;
+            }
+            form input:last-child {
+                margin-bottom: 15px;
+            }
+            .logIn {
+                background-color: #e2d8d8;
+                color: #00000080;
+                text-align: center;
+                padding: 8px;
+                border-radius: 2px;
+                font-size: 18px;
+                word-spacing: 2px;
+            }
+            .logIn:hover {
+                background-color: #d3d3d3;
+            }
+            .fbtn {
+                background-color: #5264a9;
+                color: white;
+                float: left;
+                width: 140px;
+                padding: 9px 9px 9px 17px;
+                text-align: center;
+                margin-top: 10px;
+                border-radius: 3px;
+            }
+            .gbtn {
+                background-color: #e80007;
+                color: white;
+                float: right;
+                width: 140px;
+                padding: 9px 9px 9px 17px;
+                text-align: center;
+                margin-top: 10px;
+                border-radius: 3px;
+            }
+            .chessPosition, .surveyBox, .topPlayers {
+                background-color: white;
+                margin-bottom: 15px;
+            }
+            .chessPosition p:first-child, .surveyBox p:first-child,
+            .topPlayers p:first-child{
+                padding: 6px 12px 6px 12px;
+            }
+            .chessPosition p:first-child img + span,
+            .surveyBox p:first-child img + span,
+            .topPlayers p:first-child img + span{
+                font-weight: bold;
+                color: #797776;
+                margin-left: 10px;
+                position: relative;
+                bottom: 5px;
+            }
+            .chessPosition p:first-child img + span + span,
+            .surveyBox p:first-child img + span + span,
+            .topPlayers p:first-child img + span + span{
+                color: #797776;
+                float: right;
+                position: relative;
+                top: 5px;
+                font-weight: bold;
+            }
+            .chessPosition p:last-child {
+                overflow: hidden;
+            }
+            .chessPosition p:last-child img {
+                width: 330px;
+            }
+            .surveyAsk {
+                border-bottom: 1px solid lightgray;
+                width: 300px;
+                margin: auto;
+                height: 370px;
+            }
+            .surveyAsk h3 {
+                font-size: 16px;
+                color: #005e94;
+                margin-top: 15px;
+                margin-bottom: 5px;
+                padding-bottom: 20px;
+            }
+            .surveyAsk input, .surveyAsk span {
+                color: #666463;
+                cursor: pointer;
+            }
+            label {
+                cursor: pointer;
+            }
+            .submitBtn {
+                display: none;
+                background-color: orange;
+                color: white;
+                text-align: center;
+                padding: 10px;
+                border-radius: 6px;
+                font-size: 16px;
+                width: 120px;
+                margin-top: 20px;
+            }
+            .submitBtn:hover {
+                background-color: #ec7818;
+            }
+            
+            .playerInfo {
+                margin-left: 11px;
+                padding-bottom: 10px;
+            }
+            .playerInfo span:first-child,
+            .playerInfo span:last-child{
+                color: #666463; 
+                font-size: 14px;
+                margin-right: 10px;
+            }
+            .playerInfo span:nth-child(4) {
+                color: #005e94;
+                font-weight: bold;
+                font-size: 14px;
+            }
+            footer {
+                display: flex;
+                justify-content: space-between;
+                max-width: 1040px;
+                width: 65%;
+                color: rgba(255,255,255,.5);
+                font-weight: bold;
+                font-size: 11px;
+                margin-top: 20px;
+                cursor: pointer;
+                margin-bottom: 15px;
+            }
+            footer p span:hover {
+                color: orange;
+            }
+            .leftFoot {
+                max-width: 720px;
+                width: 57%;
+                line-height: 23px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div>
+                    <a class="chessCom" href="http://www.chess.com" target="blank"><img src="images/share-logo.38a45f6e.png" alt="nkar" class="logo1"/></a>
+                    <h1>Play Chess Online on the #1 Chess SIte</h1>
+                    <ul>
+                        <li>Play with over 15 million members</li>
+                        <li>Improve with powerful training tools</li>
+                        <li>Learn from the world's best masters</li>
+                    </ul>
+                    <a href="https://www.chess.com/register" target="blank" class="playNow"><p><span class="btnTxt1">Play Now</span></p></a>
+                </div>
+                <div>
+                    <img class="headImgRight" src="images/Screenshot-2018-4-21 Chess coaaaaaam - Play Chess Online - Free Games.png" alt="nkar" />
+                </div>
+            </header>
+            <nav>
+                <a href="https://www.chess.com/learn-how-to-play-chess" target="blank" class="navLink">
+                    <img src="images/learn_to_play.png" alt="nkar" />
+                    <span>Learn to Play</span></a>
+                
+                <a href="https://www.chess.com/play-chess-online" target="blank">
+                    <img src="images/play_online.png" alt="nkar" /><span>Play Online</span></a>
+                
+                <a href="https://www.chess.com/play/computer" target="blank">
+                   <img src="images/play_computer.png" alt="nkar" />
+                   <span>Play Computer</span></a>
+                
+                <a href="https://www.chess.com/play/apps" target="blank">
+                    <img src="images/play_on_mobile.png" alt="nkar" />
+                    <span>Play on Mobile</span></a>
+                
+                <a href="https://www.chess.com/tactics" target="blank">
+                    <img src="images/solve_puzzles.png" alt="nkar" />
+                    <span>Solve Puzzles</span></a>
+            </nav>
+            <main>
+                <section class="leftSection">
+                    <div class="wrapperInLeftSection">
+                        <article>
+                            <a href="https://www.chess.com/news/view/u-s-championships-round-three-always-bet-on-black" target="blank">
+                                <img src="images/woman_with_glasses.jpeg" alt="nkar" class="leftSectionImg1"/>
+                                <h2>Caruana Joins U.S. Champs Lead As Black Strikes Back</h2></a>
+                            
+                            <img src="images/small_article.png" alt="" width="20" />
+                            <span class="fm">FM</span>
+                            <span class="mklein">MikeKlein</span>
+                            <span>| 15 hrs ago</span>
+                            <p class="leftSectionTxt1">Yesterday at the 2018 U.S. Championships, White dominated, winning all seven decisive games. In today's round three, the roulette wheel tilted the other way. Black won a total of five games, and players of the second move collectively did better in both the U.S. Championship and in the U.S. Women's </p>
+                        </article>
+                        <section class="nth1">
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/news/view/giri-perfection-continues-at-shamkir-chess" target="blank">
+                                    <img src="images/girl_perfection.jpeg" alt="nkar" />
+                                    <h3>'Giri Perfection' Continues At Shamkir Chess</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                <span class="mklein">PeterDoggers</span>
+                                <span>| 23 hrs ago</span>
+                                <p class="leftSectionTxt1">In the second round of the Gashimov Memorial in Shamkir, Azerbaijan all games ended in draws once again. Anish Giri, who joked about a</p>
+                            </article>
+                            <article class="nth1Left">
+                                <a class="artLink" href="https://www.chess.com/article/view/frank-marshall-part-5-a-radical-change" target="blank">
+                                    <img src="images/frank_marshall.jpeg" alt="nkar" />
+                                    <h3>Frank Marshall, Part 5: A Radical Change</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">IM</span>
+                                <span class="mklein">Silman</span>
+                                <span>| 11 hrs ago</span>
+                                <p class="leftSectionTxt1">Frank Marshall played quite a bit in 1915, but all his games were in the U.S. There were two reasons for this: First, he was 38 years old; going </p>
+                            </article>                           
+                        </section>
+                        <section class="nth2">
+                                <article class="nth1Left">
+                                <a href="https://www.chess.com/video/player/surfs-up-san-diegos-best-pro-games" target="blank">
+                                    <img src="images/dreev.png" alt="nkar" />
+                                    <h3>'Giri Perfection' Continues At Shamkir Chess</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">IM</span>
+                                <span class="mklein">Keaton87</span>
+                                <span>| 3 days ago</span>
+                                <p class="leftSectionTxt1">IM Keaton Kiewra shows you the gnarliest moves and tactics from the San Diego Surfers' best chess games of the 2018 PRO Chess League.</p>
+                            </article>
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/blog/EOGuel/learn-from-the-masters-laskers-quick-mate" target="blank">
+                                    <img src="images/emanuel_lasker.jpeg" alt="nkar" />
+                                    <h3>Learn From The Masters: Lasker's Quick Mate</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                <span class="mklein">EOGuel</span>
+                                <span>| 18 hrs ago</span>
+                                <p class="leftSectionTxt1">In the second round of the Gashimov Memorial in Shamkir, Azerbaijan all games ended in draws once again. Anish Giri, who joked about a</p>
+                            </article>
+                            </section>
+                        <section class="nth3">
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/news/view/hat-trick-for-gunina-19th-european-womens-champion" target="blank">
+                                    <img src="images/gunina.jpeg" alt="nkar" />
+                                    <h3>Gunina Wins European Women's Championship</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">IM</span>
+                                <span class="mklein">JovankaHouska</span>
+                                <span>| 1 days ago</span>
+                                <p class="leftSectionTxt1">GM Valentina Gunina won her third European gold at the women's championship in Vysoké Tatry, Slovakia. The Russian grandmaster</p>
+                            </article>
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/article/view/wesley-so-teaches-chess" target="blank">
+                                    <img src="images/wesley.jpeg" alt="nkar" />
+                                    <h3>Wesley So Teaches Chess</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">GM</span>
+                                <span class="mklein">Gserper</span>
+                                <span>| 6 days ago</span>
+                                <p class="leftSectionTxt1">In an old article, I expressed the opinion that some games played by really strong grandmasters shouldn't be studied by</p>
+                            </article>
+                        </section>
+                        <section class="nth4">
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/news/view/so-akobian-still-perfect-at-u-s-champs-in-decisive-day-2" target="blank">
+                                    <img src="images/so_akobian.jpeg" alt="nkar" />
+                                    <h3>So, Akobian Still Perfect At U.S. Champs In Decisive Day 2</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">FM</span>
+                                <span class="mklein">MikeKlein</span>
+                                <span>| 4 days ago</span>
+                                <p class="leftSectionTxt1">Talk about a whitewash. In round two of the 2018 U.S. Championships, more games produced wins than draws, and White had seven wins and no </p>
+                            </article>
+                            <article class="nth1Left">
+                                <a href="https://www.chess.com/article/view/frank-marshall-part-4-st-petersburg-1914-and-the-gods-of-chess" target="blank">
+                                    <img src="images/piter.jpeg" alt="nkar" />
+                                    <h3>So, Akobian Still Perfect At U.S. Champs In Decisive Day 2</h3>
+                                </a>
+                                <img src="images/small_article.png" alt="" width="20" />
+                                 <span class="fm">IM</span>
+                                <span class="mklein">Silman</span>
+                                <span>| 7 days ago</span>
+                                <p class="leftSectionTxt1">Talk about a whitewash. In round two of the 2018 U.S. Championships, more games produced wins than draws, and White had seven wins and no </p>
+                            </article>
+                        </section>
+                        <div class="clickMore">More ^</div>
+                    </div>
+                </section>
+                <aside>
+                    <div class="stathistick">
+                        <p style="background-color: #f1f1f1;">
+                            <img src="images/members.png" alt="nkar" />
+                            <span>Members</span>
+                            <span>22,575,004</span>
+                        </p>
+                        <p>
+                            <img src="images/small_board.png" alt="nkar" />
+                            <span>Games Today</span>
+                            <span>2,499,478</span>
+                        </p>
+                        <p>
+                            <img src="images/small_pawn.png" alt="nkar" />
+                            <span>Players Online</span>
+                            <span>74,262</span>
+                        </p>
+                        <p>
+                            <img src="images/small_crown.png" alt="nkar" />
+                            <span>Titled Online</span>
+                            <span>186</span>
+                        </p>
+                        <div class="linkBox">
+                            <div class="stathickLinks">
+                                <a href="https://www.facebook.com/chess" target="blank">
+                                    <img src="images/fb_f.png" alt="nkar" width="40"/>
+                                    <p>670K</p>
+                                </a>
+                                
+                                <a href="https://twitter.com/chesscom" target="blank">
+                                    <img src="images/twit_t.png" alt="nkar" style="width: 29px; margin-bottom: 5px;"/>
+                                    <p>81K</p>
+                                </a>
+                                
+                                <a href="https://www.youtube.com/user/wwwChesscom" target="blank">
+                                    <img src="images/youtube_y.png" alt="nkar" width="35"/>
+                                    <p>166K</p>
+                                </a>
+                                
+                                <a href="https://www.twitch.tv/chess" target="blank">
+                                    <img src="images/twitch.png" alt="nkar" width="27"/>
+                                    <p>59K</p>
+                                </a>
+                                
+                                <a href="https://www.instagram.com/wwwchesscom/" target="blank">
+                                    <img src="images/inst_i.png" alt="nkar" width="29"/>
+                                    <p>8.8K</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formBox">
+                        <p>Sign Up</p>
+                        <p style="margin-top: 8px; margin-bottom: 4px"><sup><span style="color: lightgray;">________________</span></sup> <span style="color: #878787;">or log in</span> <sup><span style="color: lightgray;">________________</span></sup></p>
+                        <form action="" method="post">
+                            <input type="text" name="nmOrem" placeholder="Username/Email" />
+                            <input type="password" name="pswd1" />
+                            <input type="checkbox" name="check1" id="checking"/><label for="checking"><span style="color: darkgray; cursor: pointer">Remember</span></label>
+                            <span style="float: right; margin-top: 14px; color: darkgray; cursor: pointer">Forgot Password?</span>
+                            <p class="logIn">Log in</p>
+                            <p style="margin-top: 8px; margin-bottom: 4px"><sup><span style="color: lightgray;">____________</span></sup> <span style="color: #878787;">or connect with</span> <sup><span style="color: lightgray;">____________</span></sup></p>  
+                        </form>
+                        <a href="https://www.chess.com/login#_=_" target="blank">
+                            <span class="fbtn"><img src="images/f_white.png" alt="nkar" style="width: 13px; float: left;"/>Facebook</span>
+                        </a>
+                        <a href="https://www.chess.com/register?googleuser=1&idtoken=eyJhbGciOiJSUzI1NiIsImtpZCI6IjU0MjViYjg0NjE2ZWJmOTczYWU4MGJjNjJhYzY4OGQyYTcyNzE1YWQifQ.eyJhenAiOiI0MDc2MzY1OTkyNDgtNjVmanN1NWgybzExZXIxYmZqbmI5dWx0ZnQyMjQ2bjkuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MDc2MzY1OTkyNDgtNjVmanN1NWgybzExZXIxYmZqbmI5dWx0ZnQyMjQ2bjkuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTg0MTEwOTM2NjQ5NzI4MzE5MDEiLCJlbWFpbCI6InNoYXh1bHlhbjg3QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoidHFZQWc3Q2FBRVBXWlJ5RkdFSjFUdyIsImV4cCI6MTUyNDQxNjc0NSwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwiaWF0IjoxNTI0NDEzMTQ1LCJuYW1lIjoiSG92aGFubmVzIFNoYXh1bHlhbiIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vLVdnR1pRSnpyV180L0FBQUFBQUFBQUFJL0FBQUFBQUFBQUFBL0FDTEd5V0J5d29IRXdBbzh2Rnl0b2hRallKZjlsbGxZM0Evczk2LWMvcGhvdG8uanBnIiwiZ2l2ZW5fbmFtZSI6Ikhvdmhhbm5lcyIsImZhbWlseV9uYW1lIjoiU2hheHVseWFuIiwibG9jYWxlIjoicnUifQ.rGqOSTWN4BrxOUm5-7j7ZFoG7G8M1RAaYxlGQqd_HNoWELJJPM0yXCEvVKowJPoulI4JbwvZdLrd9bRMj2rRPxviXj6vWeWfZq5gnmvdNL9uWxD1Juu52EYFxBQ22VbTsvlojVJCmBtS-buV3lFjXgL8qyPs4UABsng5ygfbIbK2ATZ9vBeL5XNcVh5AGONMsXc1-QrZj0WwNeGYnTG6gELCksl1KJBmGNXKZLxpxtBvxKFph426lq3xkTPcCnlqy3OAkH3-QS6gS0Ft6NGRM49Ah1oTMuvJAhTGhi_kv1kbyhOzv8lSzNtp8DkkY_ESQ2Y7EUqFZVG4E8PDgQVXIw" target="blank">
+                            <span class="gbtn"><img src="images/g_white.png" alt="nkar" style="width: 21px; float: left;"/>Google</span>
+                        </a>
+                    </div>
+                    <div class="chessPosition">
+                        <p style="background-color: #f1f1f1;"><img src="images/board_link.png" alt="nkar" width="25"/><span>Daily Puzzle</span><span>></span></p>
+                        <p><img src="images/chess_position.png" alt="nkar" /></p>
+                    </div>
+                    <div class="surveyBox">
+                        <p style="background-color: #f1f1f1;"><img src="images/survey_img.png" alt="nkar" width="25"/><span>Survey</span><span>></span></p>
+                        <div class="surveyAsk">
+                            <h3>Who will win the 2018 world chess championship? </h3>
+                            <p><input type="radio" name="winner" id="w1"/><span id="w1span"><label for="w1">Magnus Carlsen will win easily.</label></span></p> 
+                            <p><input type="radio" name="winner" id="w2"/><span><label for="w2">Magnus Carlsen will win in a close match.</label></span></p>
+                            <p><input type="radio" name="winner" id="w3"/><span><label for="w3">Fabiano Caruana will win easily.</label></span></p>
+                            <p><input type="radio" name="winner" id="w4"/><span><label for="w4">Fabiano Caruana will win in a close match.</label></span></p>
+                            
+                            <button class="submitBtn">Submit</button>
+                        </div>
+                    </div>
+                    <div class="topPlayers">
+                        <p style="background-color: #f1f1f1;"><img src="images/blitz.png" alt="nkar" width="25"/><span>Blitz</span><span>></span></p>
+                        <p class="playerInfo">
+                            <span>#1</span>
+                            <img src="images/hikaru.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>Hikaru</span>
+                            <span>(3014)</span>
+                        </p>
+                         <p class="playerInfo">
+                            <span>#2</span>
+                            <img src="images/laschesis.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>lachesisQ</span>
+                            <span>(2920)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#3</span>
+                            <img src="images/muxin.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>muxin1</span>
+                            <span>(2916)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#4</span>
+                            <img src="images/muis.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>Muisback26</span>
+                            <span>(2876)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#5</span>
+                            <img src="images/zaven.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>Zaven_Andria...</span>
+                            <span>(2874)</span>
+                        </p>
+                    </div>
+                    
+                    <div class="topPlayers">
+                        <p style="background-color: #f1f1f1;"><img src="images/bullet.png" alt="nkar" width="25"/><span>Bullet</span><span>></span></p>
+                        <p class="playerInfo">
+                            <span>#1</span>
+                            <img src="images/laschesis.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>lachesisQ</span>
+                            <span>(2939)</span>
+                        </p>
+                         <p class="playerInfo">
+                            <span>#2</span>
+                            <img src="images/wond.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">IM</span>
+                            <span>wonderfultime</span>
+                            <span>(2922)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#3</span>
+                            <img src="images/arm.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>ARMCOMPOSER</span>
+                            <span>(2921)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#4</span>
+                            <img src="images/pingo.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>penguingm1</span>
+                            <span>(2912)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#5</span>
+                            <img src="images/dan.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>DanielNarodits</span>
+                            <span>(2906)</span>
+                        </p>
+                    </div>
+                    <div class="topPlayers">
+                        <p style="background-color: #f1f1f1;"><img src="images/daily_img.png" alt="nkar" width="25"/><span>Bullet</span><span>></span></p>
+                        <p class="playerInfo">
+                            <span>#1</span>
+                            <img src="images/klein.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>David_Klein</span>
+                            <span>(2595)</span>
+                        </p>
+                         <p class="playerInfo">
+                            <span>#2</span>
+                            <img src="images/alex.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>AlexanderL</span>
+                            <span>(2567)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#3</span>
+                            <img src="images/arm.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">GM</span>
+                            <span>evgeniysharapov</span>
+                            <span>(2524)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#4</span>
+                            <img src="images/minear.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">NM</span>
+                            <span>pminear</span>
+                            <span>(2480)</span>
+                        </p>
+                        <p class="playerInfo">
+                            <span>#5</span>
+                            <img src="images/moroze.jpeg" alt="nkar" style="vertical-align: middle"/>
+                            <span class="fm">FM</span>
+                            <span>Moroze</span>
+                            <span>(2476)</span>
+                        </p>
+                    </div>
+                </aside>
+            </main>
+            <footer>
+                <div class="leftFoot">
+                    <p>
+                        <span>Help</span> | <span>Why Join?</span> | <span>Language</span> | <span>About</span> | <span>Jobs</span> | <span>Tems and Policy</span> |</p>
+                    <p><span>Developers</span> | <span>Chess.com &copy; 2018</span></p>
+                </div>
+                <div class="rightFoot">
+                    <p>
+                        <a href="https://www.chess.com/play/ios" target="blank">
+                               <img src="images/ios_app.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.chess.com/play/android" target="blank">
+                            <img src="images/android.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.chess.com/play/windows-phone" target="blank">
+                            <img src="images/windows.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.facebook.com/chess" target="blank">
+                            <img src="images/fb_foot.png" alt="nkar" style="margin-left: 10px;"/>
+                        </a>
+                        <a href="https://twitter.com/chesscom" target="blank">
+                            <img src="images/twit_foot.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.youtube.com/user/wwwChesscom" target="blank">
+                            <img src="images/youtube_foot.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.twitch.tv/chess" target="blank">
+                            <img src="images/twitch_foot.png" alt="nkar" />
+                        </a>
+                        <a href="https://www.instagram.com/wwwchesscom/" target="blank">
+                            <img src="images/inst_foot.png" alt="nkar" />
+                        </a>
+                     </p>
+                </div>
+            </footer>
+    </body>
+    <script>
+        var check1 = document.getElementById("w1");
+        var check2 = document.getElementById("w2");
+        var check3 = document.getElementById("w3");
+        var check4 = document.getElementById("w4");
+        var submitBtn = document.getElementsByClassName("submitBtn");
+        check1.addEventListener("click", checking);
+        check2.addEventListener("click", checking);
+        check3.addEventListener("click", checking);
+        check4.addEventListener("click", checking);
+        function checking() {
+            submitBtn[0].style.display = "block";
+        }
+    </script>
+
+</html>
